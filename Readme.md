@@ -4,7 +4,7 @@
 - iterm2
 - iterm2 colors https://github.com/mbadolato/iTerm2-Color-Schemes
 - oh-my-zsh https://github.com/robbyrussell/oh-my-zsh (zsh manager)
-- vim (text editor)
+- macvim (text editor)
 - vundle https://github.com/VundleVim/Vundle.vim (vim package manager)
 - tmuxinator https://github.com/tmuxinator/tmuxinator
 - Remap keys https://pqrs.org/osx/karabiner/
