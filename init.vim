@@ -115,3 +115,6 @@ let g:ctrlp_extensions = ['line', 'dir']
 
 " add goo imports
 let g:go_fmt_command = "goimports"
+
+" Show Hidden files in Nerd Tree
+let NERDTreeShowHidden=1
