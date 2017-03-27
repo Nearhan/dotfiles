@@ -1,14 +1,20 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="clean"
+# Path to your oh-my-zsh installation.
+  export ZSH=/home/nearhan/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME=""
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -51,7 +57,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -68,7 +73,7 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -79,48 +84,22 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export EDITOR='vi'
-export GIT_EDITOR=$EDITOR
-####################
-# Custom Path
-###################
-export PATH=/usr/local/bin:$PATH
 
 
-####################
-# ENV Variables
-####################
-export WORKON_HOME=~/Envs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+# Add Custom Paths
+
+# ADD GO LANG
+export PATH=$PATH:/usr/local/go/bin
+
+# ADD GO PATH
+export PATH=$PATH:$(go env GOPATH)/bin
+export GOPATH=~/Code/golang
 
 
-######################
-# Source Files
-#####################
-source /usr/local/Cellar/nvm/0.23.3/nvm.sh
-source /usr/local/bin/virtualenvwrapper.sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-
-
-##################
-# DOCKER-OSX VM Performance
-#################
-export VM_MEMORY=4096
-export DOCKER_OSX_DIR=/Users/nearhan/code
-
-
-###################
-# boot2docker
-#################
-
-
-
-
-##################
-# GO LANG Variables
-#################
-
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-alias mygo='cd /Users/nearhan/go/src/github.com'
+# Pure Prompt
+fpath+=($fpath '/home/nearhan/.nvm/versions/node/v7.7.4/lib/node_modules/pure-prompt/functions')
+autoload -U promptinit; promptinit
+prompt pure
