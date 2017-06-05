@@ -21,3 +21,8 @@ export PATH=$PATH:$(go env GOPATH)/bin
 export GOPATH=~/Code/golang
 
 alias golang='cd ~/Code/golang'
+
+
+# Editor
+export EDITOR='vi'
+export GIT_EDITOR=$EDITOR
