@@ -26,11 +26,11 @@ let maplocalleader="\\"
 call plug#begin('~/.local/share/nvim/plugged')
 
 
-Plug 'flazz/vim-colorschemes'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'Valloric/YouCompleteMe'
 Plug 'fatih/vim-go'
+Plug 'tomasr/molokai'
+Plug 'sickill/vim-monokai'
 
 
 " Initialize plugin system

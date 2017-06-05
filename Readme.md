@@ -1,7 +1,7 @@
 # Ubuntu Setup
 
 ## Tools
-- oh-my-zsh https://github.com/robbyrussell/oh-my-zsh (zsh manager)
+- antigen  
 - neovim (text editor)
 - pure prompt https://github.com/sindresorhus/pure (minimal prompt)
 - vim-plugin https://github.com/junegunn/vim-plug (vim plugin manager)
