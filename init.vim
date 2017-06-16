@@ -31,6 +31,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go'
 Plug 'tomasr/molokai'
 Plug 'sickill/vim-monokai'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 
 " Initialize plugin system
@@ -85,7 +87,7 @@ set wildmenu                      " visual autocomplete for command menu
 set wrap
 set wrapmargin=0
 set noundofile
-set clipboard=unnamed
+set clipboard+=unnamedplus
 " }}}
  
 
@@ -118,3 +120,11 @@ let g:go_fmt_command = "goimports"
 
 " Show Hidden files in Nerd Tree
 let NERDTreeShowHidden=1
+
+" Start Deoplete
+let g:deoplete#enable_at_startup=1
+
+" deoplete-go settings
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#use_cache = 1
