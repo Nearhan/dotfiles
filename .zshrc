@@ -36,3 +36,10 @@ export GIT_EDITOR=$EDITOR
 
 # Add Visual Studio Code (code)
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+
+# speed up mac os x sierra commands
+defaults write com.apple.universalaccess reduceMotion -bool true
+defaults write com.apple.dock expose-animation-duration -float 0.1
+defaults write com.apple.finder DisableAllAnimations -bool true
+
