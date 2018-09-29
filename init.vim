@@ -33,6 +33,8 @@ Plug 'tomasr/molokai'
 Plug 'sickill/vim-monokai'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+"Plug 'zchee/deoplete-jedi'
+Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
 
 " Initialize plugin system
