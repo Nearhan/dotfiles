@@ -1,8 +1,7 @@
 # Ubuntu Setup
 
 ## Tools
-- iterm2
-- iterm2 colors https://github.com/mbadolato/iTerm2-Color-Schemes
+- Alacritty
 - Anitgen
 - NeoVim (text editor)
 - vim plugin
