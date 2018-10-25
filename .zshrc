@@ -1,14 +1,5 @@
 source /usr/local/bin/antigen.zsh
 
-# alias
-alias vim="nvim"
-alias vi="nvim"
-alias qntfy="cd ~/Code/golang/src/gitlab.qntfy.com"
-alias github="cd ~/Code/golang/src/github.com/Nearhan"
-alias golang='cd ~/Code/golang'
-alias slack='open /Applications/Slack.app/ --args --disable-gpu'
-
-
 # Load oh my zsh
 antigen use oh-my-zsh
 antigen bundle git
@@ -20,6 +11,14 @@ antigen bundle sindresorhus/pure
 
 antigen apply
 
+# alias
+alias vim="nvim"
+alias vi="nvim"
+alias ls="exa"
+alias qntfy="cd ~/Code/golang/src/gitlab.qntfy.com"
+alias github="cd ~/Code/golang/src/github.com/Nearhan"
+alias golang='cd ~/Code/golang'
+alias slack='open /Applications/Slack.app/ --args --disable-gpu'
 
 # ADD GO PATH
 export GOPATH="$HOME/Code/golang"
@@ -28,6 +27,9 @@ export PATH="$GOPATH/bin:$PATH"
 # Add Python
 export PATH"=/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+
+# Add Rust 
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Add NVM
 #export NVM_DIR=~/.nvm
