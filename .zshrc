@@ -9,9 +9,11 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 
 antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
 
 antigen apply
+
+autoload -U promptinit && promptinit
+prompt pure
 
 # other options
 #bindkey -v
@@ -37,8 +39,6 @@ export GOPRIVATE="github.platforms.engineering"
 export PATH"=/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-export PATH="/Users/gksjm/Library/Python/3.7/bin:$PATH"
-export PATH="/Users/gksjm/Library/Python/2.7/bin:$PATH"
 export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 
 # Add JAVA
@@ -65,16 +65,19 @@ defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false        
 #defaults write com.apple.dock expose-animation-duration -float 0.1
 #defaults write com.apple.finder DisableAllAnimations -bool true
 
-# Work Stuff
-
-source ~/.bash_aliases
-source ~/.bash_functions
-export GITHUB_TOKEN=70d54856b72657227d24fc031b17f1cf22a9c7df
-export VAULT_ADDR=https://vault.agro.services
-export HOMEBREW_GITHUB_TOKEN=$GITHUB_TOKEN
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 
 alias k="kubectl"
 
-export LD_LIBRARY_PATH=/Users/gksjm/Downloads/instantclient_18_1
-export PKG_CONFIG_PATH=/Users/gksjm/Downloads/instantclient_18_1
+
+# Work Paths
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/farhansyed/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/farhansyed/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/farhansyed/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/farhansyed/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
