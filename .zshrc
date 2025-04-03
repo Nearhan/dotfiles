@@ -1,8 +1,8 @@
 PATH="/usr/local/bin:$PATH"
 
-source /usr/local/bin/antigen.zsh
-
 export PATH=$PATH:/opt/homebrew/bin
+
+source /usr/local/bin/antigen.zsh
 
 # Load oh my zsh
 antigen use oh-my-zsh
@@ -12,16 +12,16 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 
-#antigen bundle mafredri/zsh-async
 
 antigen apply
 
-#autoload -U promptinit && promptinit
-#prompt pure
 
 # other options
-#bindkey -v
-#bindkey '^R' history-incremental-search-backward
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+
+# oh my posh
+eval "$(oh-my-posh init zsh)"
 
 # alias
 #alias vim="nvim"
@@ -87,3 +87,7 @@ if [ -f '/Users/farhansyed/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/
 if [ -f '/Users/farhansyed/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/farhansyed/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 PATH="/usr/local/bin:$PATH"
 PATH="/usr/local/bin:$PATH"
+
+
+eval "$(oh-my-posh init zsh)"
+
