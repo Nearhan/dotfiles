@@ -1,4 +1,8 @@
+PATH="/usr/local/bin:$PATH"
+
 source /usr/local/bin/antigen.zsh
+
+export PATH=$PATH:/opt/homebrew/bin
 
 # Load oh my zsh
 antigen use oh-my-zsh
@@ -8,27 +12,27 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 
-antigen bundle mafredri/zsh-async
+#antigen bundle mafredri/zsh-async
 
 antigen apply
 
-autoload -U promptinit && promptinit
-prompt pure
+#autoload -U promptinit && promptinit
+#prompt pure
 
 # other options
 #bindkey -v
 #bindkey '^R' history-incremental-search-backward
 
 # alias
-alias vim="nvim"
-alias vi="nvim"
-alias ls="exa"
+#alias vim="nvim"
+#alias vi="nvim"
+#alias ls="exa"
 #alias qntfy="cd ~/Code/golang/src/gitlab.qntfy.com"
 #alias github="cd ~/Code/golang/src/github.com/Nearhan"
-alias golang='cd ~/Code/golang'
+#alias golang='cd ~/Code/golang'
 #alias slack='open /Applications/Slack.app/ --args --disable-gpu'
-alias dv='docker volume rm $(docker volume ls -qf dangling=true)'
-alias ds='docker-compose stop && docker-compose rm --force'
+#alias dv='docker volume rm $(docker volume ls -qf dangling=true)'
+#alias ds='docker-compose stop && docker-compose rm --force'
 
 # ADD GO PATH
 export GOPATH="$HOME/Code/golang"
@@ -81,3 +85,5 @@ if [ -f '/Users/farhansyed/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/farhansyed/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/farhansyed/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+PATH="/usr/local/bin:$PATH"
+PATH="/usr/local/bin:$PATH"
