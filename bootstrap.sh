@@ -1,55 +1,63 @@
 #!/bin/bash
+# Usage:
+#   ./bootstrap.sh        install Homebrew + Brewfile, then symlink dotfiles into $HOME
+#   ./bootstrap.sh link   only (re)create the symlinks
 
 # Exit immediately if a command exits with a non-zero status
 set -e
 
-echo "Starting installation of Homebrew and Oh My Posh..."
+DOTFILES="$(cd "$(dirname "$0")" && pwd)"
 
-# Check if Homebrew is already installed
+# Symlink $DOTFILES/$1 to $2, moving any existing real file/dir aside first
+link() {
+    local src="$DOTFILES/$1" dest="$2"
+    if [[ -L "$dest" ]]; then
+        rm "$dest"
+    elif [[ -e "$dest" ]]; then
+        local backup="$dest.backup.$(date +%Y%m%d%H%M%S)"
+        mv "$dest" "$backup"
+        echo "backed up $dest -> $backup"
+    fi
+    mkdir -p "$(dirname "$dest")"
+    ln -s "$src" "$dest"
+    echo "linked $dest -> $src"
+}
+
+link_all() {
+    link .zshrc     "$HOME/.zshrc"
+    link .zprofile  "$HOME/.zprofile"
+    link .tmux.conf "$HOME/.tmux.conf"
+    link nvim       "$HOME/.config/nvim"
+    link kitty      "$HOME/.config/kitty"
+
+    # Secrets go in ~/.zshrc.local, which is never committed
+    touch "$HOME/.zshrc.local"
+    chmod 600 "$HOME/.zshrc.local"
+}
+
+if [[ "$1" == "link" ]]; then
+    link_all
+    exit 0
+fi
+
 if command -v brew &>/dev/null; then
     echo "Homebrew is already installed. Updating..."
     brew update
 else
     echo "Installing Homebrew..."
-    # The official Homebrew installation command
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    
-    # Set up Homebrew in the current shell session
-    if [[ $(uname) == "Darwin" ]]; then
-        # macOS
-        echo "Setting up Homebrew paths for macOS..."
-        # These might be needed depending on the system architecture (Intel vs Apple Silicon)
-        if [[ $(uname -m) == "arm64" ]]; then
-            echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
-            eval "$(/opt/homebrew/bin/brew shellenv)"
-        else
-            echo 'eval "$(/usr/local/bin/brew shellenv)"' >> ~/.zprofile
-            eval "$(/usr/local/bin/brew shellenv)"
-        fi
-    elif [[ $(uname) == "Linux" ]]; then
-        # Linux
-        echo "Setting up Homebrew paths for Linux..."
-        echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.profile
-        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    fi
 fi
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Install Alacritty
 echo "==========="
-echo "install Alacritty"
-brew install alacritty || true
-cp .alacritty.toml ~/
+echo "Installing Brewfile"
+brew bundle --file "$DOTFILES/Brewfile"
 
-# Move .zshrc to correct location
 echo "==========="
-echo "Moving .zshrc"
-cp .zshrc ~/
+echo "Linking dotfiles"
+link_all
 
-# Install Oh My Posh
-echo "Installing Oh My Posh..."
-brew tap jandedobbeleer/oh-my-posh
-brew install oh-my-posh
+# Allow key repeat (instead of the accent popup) in VS Code, for vim mode
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 
-echo "Installation complete!"
-echo "To use Oh My Posh, you need to configure your shell to use it."
-echo "Check the documentation at: https://ohmyposh.dev/docs/installation/prompt"
+echo "Done. Put API keys/tokens in ~/.zshrc.local, then open a new kitty window."
