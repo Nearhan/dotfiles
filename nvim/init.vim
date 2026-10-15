@@ -13,7 +13,6 @@ set nocompatible                  " sets vi capatiblity to no
 filetype off
 syntax enable                     " enables syntax processing
 set t_Co=256
-set termencoding=utf-8
 highlight Normal ctermfg=grey ctermbg=black
 let mapleader=","                 " making the leader a comma
 let maplocalleader="\\"
@@ -26,20 +25,15 @@ let maplocalleader="\\"
 call plug#begin('~/.local/share/nvim/plugged')
 
 
-Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'fatih/vim-go'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'preservim/nerdtree'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tomasr/molokai'
 Plug 'sickill/vim-monokai'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go', { 'do': 'make'}
-"Plug 'zchee/deoplete-jedi'
-Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
 
 " Initialize plugin system
 call plug#end()
-set runtimepath^=~/.vim/bundle/ctrlp.vim "Load Ctrl.p runtime"
 filetype plugin indent on         " load file-type specific indent files
 " }}}
 
@@ -75,7 +69,6 @@ set showmode
 set splitbelow
 set splitright
 set synmaxcol=512
-set termencoding=utf-8
 set textwidth=0
 set title
 set ttimeout
@@ -123,10 +116,8 @@ let g:go_fmt_command = "goimports"
 " Show Hidden files in Nerd Tree
 let NERDTreeShowHidden=1
 
-" Start Deoplete
-let g:deoplete#enable_at_startup=1
-
-" deoplete-go settings
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-let g:deoplete#sources#go#use_cache = 1
+" Completion as you type (built into Neovim 0.12+); 'o' pulls from the
+" omnifunc, which vim-go backs with gopls
+set autocomplete
+set complete^=o
+set completeopt=menuone,noselect,popup
