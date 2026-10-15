@@ -5,8 +5,8 @@ brew "antigen"
 brew "certstrap"
 # Isolated development environments using Docker
 brew "docker-compose"
-# Modern replacement for 'ls'
-brew "exa"
+# Modern, maintained replacement for ls
+brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Play, record, convert, and stream select audio and video codecs

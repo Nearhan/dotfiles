@@ -20,7 +20,7 @@ prompt pure
 # alias
 alias vim="nvim"
 alias vi="nvim"
-alias ls="exa"
+alias ls="eza"
 alias k="kubectl"
 alias golang='cd ~/Code/golang'
 alias dv='docker volume rm $(docker volume ls -qf dangling=true)'
